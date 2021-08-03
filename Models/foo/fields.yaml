@@ -1,0 +1,355 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    # id:
+    #     label: ID
+    #     disabled: true
+
+    name:
+        label: 名称
+        span: auto
+        comment: hello comment
+        # cssClass: p-4
+        attributes:
+            prefix: $
+            icon: user
+            # right-icon: pencil
+            suffix: '@email'
+    extra[image]:
+        label: 单图片上传
+        span: auto
+        type: fieldfileupload
+        mode: image
+        valueFrom: seat_image
+    extra[images]:
+        label: 多图片上传
+        span: auto
+        type: fieldfileupload
+        mode: image
+        valueFrom: seat_images
+
+    desc:
+        label: 描述
+        span: auto
+        type: textarea
+        # trigger:
+        #     action: show
+        #     field: published
+        #     condition: checked
+    published:
+        label: 发布
+        span: auto
+        type: toggle
+    published_at:
+        label: 发布时间
+        type: datepicker
+        span: auto
+        trigger:
+            action: enable
+            field: published
+            condition: checked
+    extra[onrefresh]:
+        label: partial
+        type: partial
+        span: full
+
+
+
+
+tabs:
+    fields:
+        content:
+            label: 内容
+            tab: 内容
+            type: wangeditor
+            trigger:
+                  action: show
+                  field: published
+                  condition: checked
+        avatar:
+            label: 图片上传
+            tab: 图片
+            type: fileupload
+            mode: image
+            span: auto
+            imageHeight: 250
+            imageWidth: 250
+        avatars:
+            label: 多图上传
+            tab: 图片
+            type: fileupload
+            mode: image
+            span: auto
+            imageHeight: 250
+            imageWidth: 250
+        extra[partial]:
+            tab: 自定义内容区
+            label: partial
+            span: full
+            type: partial
+
+
+        extra[toggle]:
+            tab: 选择框
+            label: toggle
+            span: auto
+            type: toggle
+            size: lg
+            trigger:
+                action: enable
+                field: published
+                condition: checked
+        extra[radio]:
+            tab: 选择框
+            label: 单选框
+            span: auto
+            type: radio
+            options:
+                1: 男
+                2: 女
+            trigger:
+                action: enable
+                field: published
+                condition: checked
+        extra[radio-inline]:
+            tab: 选择框
+            label: 单选框
+            span: auto
+            type: radio
+            options:
+                1: 男
+                2: 女
+            attributes:
+                inline: true
+            trigger:
+                action: enable
+                field: published
+                condition: checked
+        extra[checkbox]:
+            tab: 选择框
+            label: checkbox
+            span: auto
+            type: checkbox
+            options:
+                1: 红色
+                2: 黄色
+            trigger:
+                action: enable
+                field: published
+                condition: checked
+        extra[checkbox-inline]:
+            tab: 选择框
+            label: checkbox-inline
+            span: auto
+            type: checkbox
+            cssClass:
+            attributes:
+                inline: true
+            options:
+                1: 红色
+                2: 黄色
+            trigger:
+                action: enable
+                field: published
+                condition: checked
+
+        extra[checkboxlist]:
+            label: 多选
+            type: checkboxlist
+            span: full
+            options:
+                1: abc
+                2: def
+                3: ghi
+            tab: 下拉选择
+            trigger:
+                action: enable
+                field: published
+                condition: checked
+        extra[dropdown]:
+            label: 单选
+            type: dropdown
+            span: full
+            options:
+                1: abc
+                2: def
+                3: ghi
+            tab: 下拉选择
+            trigger:
+                action: enable
+                field: published
+                condition: checked
+        extra[wangeditor]:
+            label: wangeditor
+            type: wangeditor
+            span: full
+            tab: 编辑器
+        extra[Codemirror]:
+            label: Codemirror
+            type: codemirror
+            span: full
+            tab: Codemirror
+            config:
+                mode: php
+                theme: material-darker
+        extra[markdown]:
+            label: markdown
+            type: markdown
+            span: full
+            tab: markdown
+        extra[editorjs]:
+            label: editorjs
+            type: editorjs
+            span: full
+            tab: 编辑器
+        extra[quilleditor]:
+            label: quilleditor
+            type: quilleditor
+            span: full
+            tab: 编辑器
+            config:
+                theme: snow
+        extra[published_at]:
+            label: 日期
+            type: datepicker
+            span: auto
+            tab: 日期
+            trigger:
+                action: enable
+                field: published
+                condition: checked
+
+        extra[publishedtime_at]:
+            label: 时间
+            type: datetimepicker
+            span: auto
+            tab: 日期
+            trigger:
+                action: enable
+                field: published
+                condition: checked
+
+        extra[name]:
+            label: 名称
+            tab: json编辑
+            span: auto
+        extra[desc]:
+            label: 描述
+            tab: json编辑
+            type: textarea
+            span: auto
+        extra[content]:
+            label: 内容
+            tab: json编辑
+            type: wangeditor
+        extra[array]:
+            type: repeater
+            prompt: 添加一条
+            span: full
+            tab: 数组编辑
+            livewireComponent: backend.livewire.widgets.form.repeater
+            form:
+                fields:
+                    name:
+                        label: 名称
+                        span: auto
+                    image:
+                        label: 单图片上传
+                        span: auto
+                        type: fieldfileupload
+                        mode: image
+                        valueFrom: seat_image
+                    images:
+                        label: 多图片上传
+                        span: auto
+                        type: fieldfileupload
+                        mode: image
+                        valueFrom: seat_images
+                    desc:
+                        label: 描述
+                        span: auto
+                        type: textarea
+                    country:
+                      label: Country
+                      type: dropdown
+                    state:
+                        label: State
+                        type: dropdown
+                        dependsOn: country
+                    published:
+                        label: 发布
+                        span: auto
+                        type: toggle
+                    published_at:
+                        label: 发布时间
+                        type: datepicker
+                        span: auto
+                        trigger:
+                            action: disable
+                            field: published
+                            condition: unchecked
+                tabs:
+                    fields:
+                        content:
+                            label: 内容
+                            tab: 内容
+                            type: wangeditor
+                        extra[wangeditor]:
+                            label: wangeditor
+                            type: wangeditor
+                            span: full
+                            tab: 编辑器
+                        # extra[editorjs]:
+                        #     label: editorjs
+                        #     type: editorjs
+                        #     span: full
+                        #     tab: 编辑器
+                        extra[quilleditor]:
+                            label: quilleditor
+                            type: quilleditor
+                            span: full
+                            tab: 编辑器
+                            config:
+                                theme: snow
+
+                        extra[Codemirror]:
+                            label: Codemirror
+                            type: codemirror
+                            span: full
+                            tab: Codemirror
+                            config:
+                                mode: php
+                                theme: material-darker
+                        extra[markdown]:
+                            label: markdown
+                            type: markdown
+                            span: full
+                            tab: markdown
+                        extra[published_at]:
+                            label: 日期
+                            type: datepicker
+                            span: auto
+                            tab: 日期
+                        extra[publishedtime_at]:
+                            label: 时间
+                            type: datetimepicker
+                            span: auto
+                            tab: 日期
+                        extra[name]:
+                            label: 名称
+                            tab: json编辑
+                            span: auto
+                        extra[desc]:
+                            label: 描述
+                            tab: json编辑
+                            type: textarea
+                            span: auto
+                        extra[content]:
+                            label: 内容
+                            tab: json编辑
+                            type: wangeditor
+
+
+
